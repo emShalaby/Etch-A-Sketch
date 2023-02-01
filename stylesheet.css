@@ -9,9 +9,19 @@ body,html{
     height: 100%;
     background-color: black;
     display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.header h1{
+    color: white;
+}
+
 
 .container{
     display: flex;
@@ -20,6 +30,7 @@ body,html{
     background-color: whitesmoke;
     flex-wrap: wrap;
     align-content: flex-start;
+    align-self: center;
 }
 
 .box{
