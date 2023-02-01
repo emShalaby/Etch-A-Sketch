@@ -1,8 +1,9 @@
 const container=document.querySelector('.container');
 const clear=document.querySelector('#clear');
 const rangeText=document.querySelector('.range-text');
-const size=document.querySelector('#size')
-const borderChange=document.querySelector('#border-change')
+const size=document.querySelector('#size');
+const borderChange=document.querySelector('#border-change');
+const body=document.querySelector('body');
 
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
@@ -33,6 +34,7 @@ function sizeChange() {
     container.innerHTML=''
     rangeText.innerHTML=size.value+' '+'x'+' '+size.value;
     makeGrid(size.value,size.value);
+    
     // to check if border is on or off
     if (borderChange.innerHTML.includes('ON')){
         createBorder();
@@ -72,10 +74,24 @@ function clearContainer(){
     var columnClass=document.querySelectorAll('.column');
     columnClass.forEach(element=>element.style.backgroundColor='white');
 }
+
+function darkenEffect(elem){
+    
+}
+
+function buttonHighlight(elem){
+    if (elem.style.backgroundColor!='rgb(68, 61, 61)') elem.style.backgroundColor='rgb(68, 61, 61)';
+    else elem.style.backgroundColor='rgb(77, 3, 3)';
+    
+}
+
+
 //------EVENTS-----
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
+borderChange.addEventListener('click',()=>buttonHighlight(borderChange));
+
 
 
 
