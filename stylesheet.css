@@ -44,4 +44,13 @@ body,html{
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.content{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    padding-left: calc(50% - 240px);
+    padding-right: 400px;
 }
