@@ -23,6 +23,8 @@ function makeGrid(rows,columns){
             row.appendChild(column);
         }
     }
+    var columnClass=document.querySelectorAll('.column');
+    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color='black')));
 }
 
 
@@ -62,6 +64,9 @@ function toggleBorder(b){
 
 }
 
+function coloring(elem,color='black'){
+    elem.style.backgroundColor=color;
+}
 //------EVENTS-----
 borderChange.addEventListener('click',()=>toggleBorder(borderChange))
 size.oninput=sizeChange
