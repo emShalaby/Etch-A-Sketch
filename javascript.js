@@ -28,7 +28,7 @@ function makeGrid(rows,columns){
 }
 
 
-//size slider
+//function that manages everything when u change the slider value
 function sizeChange() {
     container.innerHTML=''
     rangeText.innerHTML=size.value+' '+'x'+' '+size.value;
@@ -67,9 +67,15 @@ function toggleBorder(b){
 function coloring(elem,color='black'){
     elem.style.backgroundColor=color;
 }
+
+function clearContainer(){
+    var columnClass=document.querySelectorAll('.column');
+    columnClass.forEach(element=>element.style.backgroundColor='white');
+}
 //------EVENTS-----
-borderChange.addEventListener('click',()=>toggleBorder(borderChange))
-size.oninput=sizeChange
+borderChange.addEventListener('click',()=>toggleBorder(borderChange));
+size.oninput=sizeChange;
+clear.addEventListener('click',clearContainer);
 
 
 
