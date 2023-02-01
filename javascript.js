@@ -80,16 +80,23 @@ function darkenEffect(elem){
 }
 
 function buttonHighlight(elem){
-    if (elem.style.backgroundColor!='rgb(68, 61, 61)') elem.style.backgroundColor='rgb(68, 61, 61)';
-    else elem.style.backgroundColor='rgb(77, 3, 3)';
-    
+
+    if(elem.style.backgroundColor!='rgb(77, 3, 3)') {
+        elem.style.backgroundColor='rgb(77, 3, 3)'
+        return;
+    }
+    elem.style.backgroundColor='rgb(68, 61, 61)'
 }
 
-
+function buttonFlash(elem){
+    elem.style.backgroundColor='rgb(77, 3, 3)'
+    setTimeout(()=>elem.style.backgroundColor='rgb(68, 61, 61)',100);
+}
 //------EVENTS-----
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
+clear.addEventListener('click',()=>buttonFlash(clear));
 borderChange.addEventListener('click',()=>buttonHighlight(borderChange));
 
 
