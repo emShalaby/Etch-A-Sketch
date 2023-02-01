@@ -41,13 +41,13 @@ body,html{
     display: flex;
     flex: 1 1 0;
     background-color: white;
-    border: solid 2px;
+    border: solid 1px;
 }
 .menu{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     gap: 10px;
     
 }
@@ -67,4 +67,8 @@ body,html{
 
 .range-text{
     color: white;
+}
+
+#clear{
+    justify-self: flex-end;
 }
