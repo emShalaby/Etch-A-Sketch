@@ -1,4 +1,6 @@
 const container=document.querySelector('.container');
+const clear=document.querySelector('#clear');
+
 
 
 for (let i=0; i<256; i++){
@@ -7,16 +9,26 @@ for (let i=0; i<256; i++){
 
 }
 
-const box=document.querySelectorAll('.box');
+const boxes=document.querySelectorAll('.box');
 
-box.forEach(function (square){
-    square.addEventListener('mouseover',function(){
-        square.style.backgroundColor='black'
-    })
+boxes.forEach(function (box){
+    box.addEventListener('mouseover',()=>changeColor(box));
 }
 )
 
 
+function changeColor(elem){
+elem.style.backgroundColor='black';
+}
+
+clear.addEventListener('click',clearBoxes);
+
+function clearBoxes(){
+    boxes.forEach(function(box){
+        box.style.backgroundColor='white';
+    }
+    )
+}
 
 
 
