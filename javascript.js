@@ -1,5 +1,11 @@
 const container=document.querySelector('.container');
 const clear=document.querySelector('#clear');
+const rangeText=document.querySelector('.range-text');
+const size=document.querySelector('#size')
+
+rangeText.innerHTML=size.value+' '+'x'+' '+size.value
+
+size.oninput=()=>rangeText.innerHTML=size.value+' '+'x'+' '+size.value
 
 
 
