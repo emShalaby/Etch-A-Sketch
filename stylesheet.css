@@ -29,18 +29,20 @@ body,html{
     height: 480px;
     width: 480px;
     background-color: whitesmoke;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    align-self: center;
+    flex-direction: column;
 }
-
-.box{
-    height: 30px;
-    width: 30px;
+.row{
+    display: flex;
+    flex: 1 1 0;
     background-color: white;
-    border: solid 2px black;
 }
 
+.column{
+    display: flex;
+    flex: 1 1 0;
+    background-color: white;
+    border: solid 2px;
+}
 .menu{
     display: flex;
     justify-content: center;
