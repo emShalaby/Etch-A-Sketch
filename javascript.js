@@ -1,10 +1,11 @@
 const container=document.querySelector('.container');
 const clear=document.querySelector('#clear');
-const rangeText=document.querySelector('.range-text');
+const rangeText=document.querySelector('#range-text');
 const size=document.querySelector('#size');
 const borderChange=document.querySelector('#border-change');
 const body=document.querySelector('body');
-const darken=document.querySelector('.darken');
+const darken=document.querySelector('#darken');
+const eraser=document.querySelector('#eraser');
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -85,27 +86,30 @@ function darkenEffect(elem){
     
 }
 
-function buttonHighlight(elem){
-
-    if(elem.style.backgroundColor!='rgb(77, 3, 3)') {
-        elem.style.backgroundColor='rgb(77, 3, 3)'
-        return;
-    }
-    elem.style.backgroundColor='rgb(68, 61, 61)'
-}
-
+//for one time click buttons
 function buttonFlash(elem){
     elem.style.backgroundColor='rgb(77, 3, 3)'
     setTimeout(()=>elem.style.backgroundColor='rgb(68, 61, 61)',100);
 }
 
+function erasing(){
+    var columnClass=document.querySelectorAll('.column');
+    columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
+    colorable('white');
+}
+
+function toggleButton(btn){
+    btn.classList.toggle('ON');
+}
 //------EVENTS-----
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
-borderChange.addEventListener('click',()=>buttonHighlight(borderChange));
-darken.addEventListener('click',()=>buttonHighlight(darken));
+eraser.addEventListener('click',erasing);
+eraser.addEventListener('click',()=>toggleButton(eraser));
+darken.addEventListener('click',()=>toggleButton(darken));
+borderChange.addEventListener('click',()=>toggleButton(borderChange));
 
 
 

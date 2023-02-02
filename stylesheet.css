@@ -56,6 +56,9 @@ body,html{
     color: white;
     font-size: 36px;
 }
+.menu button.ON{
+    background-color: rgb(77, 3, 3);
+}
 input{
     width: 190px;
     
