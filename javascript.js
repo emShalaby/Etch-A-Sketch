@@ -149,6 +149,7 @@ function rainbow(){
     columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color=randomRgb())));
 }
 //------EVENTS-----
+
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
 darken.addEventListener('click',()=>toggleDarken(darken));
 borderChange.addEventListener('click',()=>toggleButton2(borderChange));
