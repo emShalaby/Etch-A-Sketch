@@ -127,14 +127,18 @@ function toggleButton2(btn){
 }
 
 //for other other cases lol
-function toggleButton3(btn){
-    const btnArr=[eraser,darken];
-    btnArr.forEach(elem=>elem.classList.remove('ON'));
-    btn.classList.toggle('ON');
+function toggleDarken(btn){
+    if ((colorBtn.classList.contains('ON')|| rainbowBtn.classList.contains('ON')) && (darken.classList.contains('ON')==false))
+        {
+        const btnArr=[eraser,darken];
+        btnArr.forEach(elem=>elem.classList.remove('ON'));
+        btn.classList.toggle('ON');
+    }
+    else darken.classList.remove('ON');
 }
 //------EVENTS-----
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
-darken.addEventListener('click',()=>toggleButton3(darken));
+darken.addEventListener('click',()=>toggleDarken(darken));
 borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 colorBtn.addEventListener('click',()=>toggleButton(colorBtn));
