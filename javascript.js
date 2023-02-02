@@ -33,7 +33,7 @@ function makeGrid(rows,columns){
         colorable(color='white');
         return;}
     else if(colorBtn.classList.contains('ON')) colorable('black');
-
+    else if(rainbowBtn.classList.contains('ON')) rainbow();
     
 }
 
@@ -105,8 +105,9 @@ function erasing(){
     columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
     colorable('white');
     }
-    else colorable('black');
+    
 }
+
 
 //if the only that specific button can be on
 function toggleButtonAll(btn){
@@ -136,6 +137,17 @@ function toggleDarken(btn){
     }
     else darken.classList.remove('ON');
 }
+
+function randomRgb(){
+    var r=Math.floor(Math.random()*256);
+    var g=Math.floor(Math.random()*256);
+    var b=Math.floor(Math.random()*256);
+    return `rgb(${r},${g},${b})`;
+}
+function rainbow(){
+    var columnClass=document.querySelectorAll('.column');
+    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color=randomRgb())));
+}
 //------EVENTS-----
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
 darken.addEventListener('click',()=>toggleDarken(darken));
@@ -143,12 +155,10 @@ borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 colorBtn.addEventListener('click',()=>toggleButton(colorBtn));
 rainbowBtn.addEventListener('click',()=>toggleButton(rainbowBtn));
+rainbowBtn.addEventListener('click',rainbow);
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
 colorBtn.addEventListener('click',()=>colorable(color='black'));
-
-
-
 
