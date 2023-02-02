@@ -4,11 +4,10 @@ const rangeText=document.querySelector('#range-text');
 const size=document.querySelector('#size');
 const borderChange=document.querySelector('#border-change');
 const body=document.querySelector('body');
-const darken=document.querySelector('#darken');
 const eraser=document.querySelector('#eraser');
 const colorBtn=document.querySelector('#color-mode');
 const rainbowBtn=document.querySelector('#rainbow');
-const btnArray=[darken,eraser,colorBtn,rainbowBtn];
+const btnArray=[eraser,colorBtn,rainbowBtn];
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -89,9 +88,7 @@ function clearContainer(){
     columnClass.forEach(element=>element.style.backgroundColor='white');
 }
 
-function darkenEffect(elem){
-    
-}
+
 
 //for one time click buttons
 function buttonFlash(elem){
@@ -136,7 +133,6 @@ function rainbow(){
 //------EVENTS-----
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
-darken.addEventListener('click',()=>toggleButtonAll(darken));
 borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 colorBtn.addEventListener('click',()=>toggleButtonAll(colorBtn));
