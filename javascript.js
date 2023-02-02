@@ -115,28 +115,13 @@ function toggleButtonAll(btn){
     btn.classList.toggle('ON');
 }
 //for other cases
-function toggleButton(btn){
-    const btnArr=[colorBtn,rainbowBtn,eraser];
-    btnArr.forEach(elem=>elem.classList.remove('ON'));
-    btn.classList.toggle('ON');
 
-}
 
 //for buttons that can be turned off / on without affecting others
 function toggleButton2(btn){
     btn.classList.toggle('ON');
 }
 
-//for other other cases lol
-function toggleDarken(btn){
-    if ((colorBtn.classList.contains('ON')|| rainbowBtn.classList.contains('ON')) && (darken.classList.contains('ON')==false))
-        {
-        const btnArr=[eraser,darken];
-        btnArr.forEach(elem=>elem.classList.remove('ON'));
-        btn.classList.toggle('ON');
-    }
-    else darken.classList.remove('ON');
-}
 
 function randomRgb(){
     var r=Math.floor(Math.random()*256);
@@ -151,11 +136,11 @@ function rainbow(){
 //------EVENTS-----
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
-darken.addEventListener('click',()=>toggleDarken(darken));
+darken.addEventListener('click',()=>toggleButtonAll(darken));
 borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
-colorBtn.addEventListener('click',()=>toggleButton(colorBtn));
-rainbowBtn.addEventListener('click',()=>toggleButton(rainbowBtn));
+colorBtn.addEventListener('click',()=>toggleButtonAll(colorBtn));
+rainbowBtn.addEventListener('click',()=>toggleButtonAll(rainbowBtn));
 rainbowBtn.addEventListener('click',rainbow);
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
