@@ -4,13 +4,14 @@ const rangeText=document.querySelector('.range-text');
 const size=document.querySelector('#size');
 const borderChange=document.querySelector('#border-change');
 const body=document.querySelector('body');
+const darken=document.querySelector('.darken');
 
+//initial range text
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
 makeGrid(size.value,size.value);
 
 //--------functions-------
-
 //generates the grid
 function makeGrid(rows,columns){
     for(let i=0; i<rows;i++){
@@ -24,10 +25,15 @@ function makeGrid(rows,columns){
             row.appendChild(column);
         }
     }
-    var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color='black')));
+
+    colorable(color='black');
 }
 
+//to make the grid boxes colorable
+function colorable(color){
+    var columnClass=document.querySelectorAll('.column');
+    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color=color)));
+}
 
 //function that manages everything when u change the slider value
 function sizeChange() {
@@ -92,13 +98,14 @@ function buttonFlash(elem){
     elem.style.backgroundColor='rgb(77, 3, 3)'
     setTimeout(()=>elem.style.backgroundColor='rgb(68, 61, 61)',100);
 }
+
 //------EVENTS-----
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 borderChange.addEventListener('click',()=>buttonHighlight(borderChange));
-
+darken.addEventListener('click',()=>buttonHighlight(darken));
 
 
 
