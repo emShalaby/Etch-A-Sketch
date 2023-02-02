@@ -84,8 +84,9 @@ input{
     font-size: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.range-text{
+#range-text{
     color: white;
+    font-size: 30px;
 }
 
 #clear{

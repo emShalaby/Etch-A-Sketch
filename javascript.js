@@ -6,6 +6,8 @@ const borderChange=document.querySelector('#border-change');
 const body=document.querySelector('body');
 const darken=document.querySelector('#darken');
 const eraser=document.querySelector('#eraser');
+const colorBtn=document.querySelector('#color-mode');
+const btnArray=[darken,eraser,colorBtn];
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -29,7 +31,8 @@ function makeGrid(rows,columns){
     if (eraser.classList.contains('ON')) {
         colorable(color='white');
         return;}
-    colorable('black');
+    else if(colorBtn.classList.contains('ON')) colorable('black');
+
     
 }
 
@@ -105,17 +108,25 @@ function erasing(){
 }
 
 function toggleButton(btn){
+    btnArray.forEach(elem=>elem.classList.remove('ON'));
+    btn.classList.toggle('ON');
+}
+
+//for buttons that can be turned off / on without affecting others
+function toggleButton2(btn){
     btn.classList.toggle('ON');
 }
 //------EVENTS-----
 eraser.addEventListener('click',()=>toggleButton(eraser));
 darken.addEventListener('click',()=>toggleButton(darken));
-borderChange.addEventListener('click',()=>toggleButton(borderChange));
+borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
+colorBtn.addEventListener('click',()=>toggleButton(colorBtn));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
+colorBtn.addEventListener('click',()=>colorable(color='black'));
 
 
 
