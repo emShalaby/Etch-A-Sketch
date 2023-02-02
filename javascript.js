@@ -26,8 +26,11 @@ function makeGrid(rows,columns){
             row.appendChild(column);
         }
     }
-
-    colorable(color='black');
+    if (eraser.classList.contains('ON')) {
+        colorable(color='white');
+        return;}
+    colorable('black');
+    
 }
 
 //to make the grid boxes colorable
@@ -93,23 +96,27 @@ function buttonFlash(elem){
 }
 
 function erasing(){
+    if (eraser.classList.contains('ON')){
     var columnClass=document.querySelectorAll('.column');
     columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
     colorable('white');
+    }
+    else colorable('black');
 }
 
 function toggleButton(btn){
     btn.classList.toggle('ON');
 }
 //------EVENTS-----
+eraser.addEventListener('click',()=>toggleButton(eraser));
+darken.addEventListener('click',()=>toggleButton(darken));
+borderChange.addEventListener('click',()=>toggleButton(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
-eraser.addEventListener('click',()=>toggleButton(eraser));
-darken.addEventListener('click',()=>toggleButton(darken));
-borderChange.addEventListener('click',()=>toggleButton(borderChange));
+
 
 
 
