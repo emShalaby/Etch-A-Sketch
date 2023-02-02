@@ -7,7 +7,8 @@ const body=document.querySelector('body');
 const darken=document.querySelector('#darken');
 const eraser=document.querySelector('#eraser');
 const colorBtn=document.querySelector('#color-mode');
-const btnArray=[darken,eraser,colorBtn];
+const rainbowBtn=document.querySelector('#rainbow');
+const btnArray=[darken,eraser,colorBtn,rainbowBtn];
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -107,21 +108,37 @@ function erasing(){
     else colorable('black');
 }
 
-function toggleButton(btn){
+//if the only that specific button can be on
+function toggleButtonAll(btn){
     btnArray.forEach(elem=>elem.classList.remove('ON'));
     btn.classList.toggle('ON');
+}
+//for other cases
+function toggleButton(btn){
+    const btnArr=[colorBtn,rainbowBtn,eraser];
+    btnArr.forEach(elem=>elem.classList.remove('ON'));
+    btn.classList.toggle('ON');
+
 }
 
 //for buttons that can be turned off / on without affecting others
 function toggleButton2(btn){
     btn.classList.toggle('ON');
 }
+
+//for other other cases lol
+function toggleButton3(btn){
+    const btnArr=[eraser,darken];
+    btnArr.forEach(elem=>elem.classList.remove('ON'));
+    btn.classList.toggle('ON');
+}
 //------EVENTS-----
-eraser.addEventListener('click',()=>toggleButton(eraser));
-darken.addEventListener('click',()=>toggleButton(darken));
+eraser.addEventListener('click',()=>toggleButtonAll(eraser));
+darken.addEventListener('click',()=>toggleButton3(darken));
 borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 colorBtn.addEventListener('click',()=>toggleButton(colorBtn));
+rainbowBtn.addEventListener('click',()=>toggleButton(rainbowBtn));
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
