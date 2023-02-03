@@ -10,27 +10,31 @@ body,html{
     background-color: rgb(68, 61, 61);
     display: flex;
     flex-direction: column;
+
 }
 
-.header{
+h1{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-}
-
-.header h1{
     color: white;
     font-family: "MD Primer Bold", Rubik, Lato, "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+    padding-left: 20px;
 }
+
 
 
 .container{
     display: flex;
+  
+    min-height: 480px;
+    min-width: 480px;
     height: 620px;
     width: 620px;
     background-color: whitesmoke;
     flex-direction: column;
+    flex: 1 1 1;
 }
 .row{
     display: flex;
@@ -48,30 +52,36 @@ body,html{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    flex-shrink: 1;
     
 }
-
+.menu>div{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    gap: 10px;
+    align-items: center;
+}
 .menu h2{
     color: white;
-    font-size: 36px;
+    font-size: 2.5vw;
 }
 .menu button.ON{
     background-color: rgb(77, 3, 3);
 }
 input{
-    width: 190px;
-    
+    width: 100%;
 }
-.range-text{
-    font-size: 32px;
-}
+
 .content{
     display: flex;
-    max-width: 100%;
-    justify-content: space-between;
+    min-width: 100%;
+    justify-content: space-around;
     padding-left: calc(50% - 310px);
-    padding-right: 200px;
     margin-top: 20px;
+    flex-shrink: 10;
+    flex-basis: 0;
+    flex-wrap: wrap;
 }
 
 button{
@@ -85,46 +95,8 @@ button{
 }
 #range-text{
     color: white;
-    font-size: 30px;
-}
-
-.header h1{
-    font-size: 40px;
-    font-weight: 900px;
+    font-size: 2.3vw;
 }
 
 
-.color-modes{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    margin-top: 50px;
-    gap: 10px;
-    width: 100%;
-    align-items: center;
-}
 
-.color-modes h2{
-    font-size: 30px;
-}
-
-.optional{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-    
-}
-.optional h2{
-    font-size: 26px;
-}
-.bottom{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-    margin-top: 50px;
-    
-}
