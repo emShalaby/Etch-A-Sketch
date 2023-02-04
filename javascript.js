@@ -10,7 +10,7 @@ const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
-const saveBtn=document.querySelector('#save')
+const saveBtn=document.querySelector('#save');
 let canvasColor='white';
 let brushColor='black';
 
@@ -287,6 +287,13 @@ pickr.on('change',(...args)=> {
     makeGrid(size.value,size.value);
     
 })
+saveBtn.addEventListener('click',()=>buttonFlash(saveBtn));
 
-
-
+saveBtn.addEventListener("click", function() {
+    html2canvas(document.querySelector(".container")).then(canvas => {
+      var link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  });
