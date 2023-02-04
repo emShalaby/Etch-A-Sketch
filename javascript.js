@@ -61,7 +61,79 @@ function colorable(color='black'){
       });
     });
     }
-
+function colorable(color='black'){
+    const columns = document.querySelectorAll('.column');
+    
+    let mouseDown = false;
+    
+    columns.forEach(column => {
+      
+      column.addEventListener('click',()=>{
+        column.style.backgroundColor=color;
+      })
+      
+      column.addEventListener('mousedown', () => {
+        mouseDown = true;
+      });
+      column.addEventListener('mouseup', () => {
+        mouseDown = false;
+      });
+      column.addEventListener('mouseenter', () =>{
+        if (mouseDown) {
+            column.style.backgroundColor=color;
+        }
+      });
+    });
+    }
+function colorable(color='black'){
+    const columns = document.querySelectorAll('.column');
+    
+    let mouseDown = false;
+    
+    columns.forEach(column => {
+      
+      column.addEventListener('click',()=>{
+        column.style.backgroundColor=color;
+      })
+      
+      column.addEventListener('mousedown', () => {
+        mouseDown = true;
+      });
+      column.addEventListener('mouseup', () => {
+        mouseDown = false;
+      });
+      column.addEventListener('mouseenter', () =>{
+        if (mouseDown) {
+            column.style.backgroundColor=color;
+        }
+      });
+    });
+    }
+//for the rainbow effect
+function rainbow(){
+        const columns = document.querySelectorAll('.column');
+        
+        let mouseDown = false;
+        
+        columns.forEach(column => {
+          
+          column.addEventListener('click',()=>{
+            column.style.backgroundColor=randomRgb();
+          })
+          
+          column.addEventListener('mousedown', () => {
+            mouseDown = true;
+          });
+          column.addEventListener('mouseup', () => {
+            mouseDown = false;
+          });
+          column.addEventListener('mouseenter', () =>{
+            if (mouseDown) {
+                column.style.backgroundColor=randomRgb();
+            }
+          });
+        });
+        }
 //function that manages everything when u change the slider value
 function sizeChange() {
     container.innerHTML=''
@@ -146,9 +218,7 @@ function randomRgb(){
     var b=Math.floor(Math.random()*256);
     return `rgb(${r},${g},${b})`;
 }
-function rainbow(){
-   colorable(color=randomRgb());
-}
+
 //------EVENTS-----
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
