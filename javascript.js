@@ -5,13 +5,12 @@ const size=document.querySelector('#size');
 const borderChange=document.querySelector('#border-change');
 const body=document.querySelector('body');
 const eraser=document.querySelector('#eraser');
-const colorBtn=document.querySelector('#color-mode');
+const colorBtn=document.querySelector('#brush');
 const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
-
-
+let brushColor='black';
 
 
 //initial range text
@@ -36,14 +35,14 @@ function makeGrid(rows,columns){
     if (eraser.classList.contains('ON')) {
         colorable(color='white');
         return;}
-    else if(colorBtn.classList.contains('ON')) colorable('black');
+    else if(colorBtn.classList.contains('ON')) colorable();
     else if(rainbowBtn.classList.contains('ON')) rainbow();
     
 }
 
 //to make the grid boxes colorable used the help of chatGPT
 
-function colorable(color='black'){
+function colorable(color=brushColor){
     const columns = document.querySelectorAll('.column');
     
     let mouseDown = false;
@@ -190,5 +189,5 @@ size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
-colorBtn.addEventListener('click',()=>colorable(color='black'));
+colorBtn.addEventListener('click',()=>colorable(brushColor));
 
