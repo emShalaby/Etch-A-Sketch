@@ -8,7 +8,8 @@ const eraser=document.querySelector('#eraser');
 const colorBtn=document.querySelector('#color-mode');
 const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
-
+const bodyStyles = window.getComputedStyle(body);
+const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
@@ -185,7 +186,7 @@ function clearContainer(){
 //for one time click buttons
 function buttonFlash(elem){
     elem.style.backgroundColor='rgb(77, 3, 3)'
-    setTimeout(()=>elem.style.backgroundColor='rgb(68, 61, 61)',100);
+    setTimeout(()=>elem.style.backgroundColor=bodyBackgroundColor,100);
 }
 
 function erasing(){
