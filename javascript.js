@@ -36,11 +36,31 @@ function makeGrid(rows,columns){
     
 }
 
-//to make the grid boxes colorable
-function colorable(color){
-    var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color=color)));
-}
+//to make the grid boxes colorable used the help of chatGPT
+function colorable(color='black'){
+    const columns = document.querySelectorAll('.column');
+    
+    let mouseDown = false;
+    
+    columns.forEach(column => {
+      
+      column.addEventListener('click',()=>{
+        column.style.backgroundColor=color;
+      })
+      
+      column.addEventListener('mousedown', () => {
+        mouseDown = true;
+      });
+      column.addEventListener('mouseup', () => {
+        mouseDown = false;
+      });
+      column.addEventListener('mouseenter', () =>{
+        if (mouseDown) {
+            column.style.backgroundColor=color;
+        }
+      });
+    });
+    }
 
 //function that manages everything when u change the slider value
 function sizeChange() {
@@ -127,8 +147,7 @@ function randomRgb(){
     return `rgb(${r},${g},${b})`;
 }
 function rainbow(){
-    var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.addEventListener('mouseover',()=>coloring(elem=element,color=randomRgb())));
+   colorable(color=randomRgb());
 }
 //------EVENTS-----
 
