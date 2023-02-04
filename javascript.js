@@ -185,7 +185,7 @@ function sizeChange() {
     makeGrid(size.value,size.value);
     
     // to check if border is on or off
-    if (borderChange.innerHTML.includes('ON')){
+    if (borderChange.classList.contains('ON')){
         createBorder();
         return;
     }
@@ -203,16 +203,10 @@ function createBorder(){
     column.forEach(elem=>elem.style.border='1px solid black');
 }
 
-function toggleBorder(b){
-    if (b.innerHTML.includes('OFF')){
-        createBorder();
-        b.innerHTML='Border: ON';
-        return;
-    }
-
-    removeBorder(); 
-    b.innerHTML='Border: OFF' ;
-
+function toggleBorder(btn){
+    if (btn.classList.contains('ON')==false) createBorder();
+    else removeBorder();
+    btn.classList.toggle('ON')
 }
 
 function coloring(elem,color='black'){
@@ -251,9 +245,6 @@ function toggleButtonAll(btn){
 
 
 //for buttons that can be turned off / on without affecting others
-function toggleButton2(btn){
-    btn.classList.toggle('ON');
-}
 
 
 function randomRgb(){
@@ -266,7 +257,6 @@ function randomRgb(){
 //------EVENTS-----
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
-borderChange.addEventListener('click',()=>toggleButton2(borderChange));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 colorBtn.addEventListener('click',()=>toggleButtonAll(colorBtn));
 rainbowBtn.addEventListener('click',()=>toggleButtonAll(rainbowBtn));

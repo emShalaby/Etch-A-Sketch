@@ -136,9 +136,7 @@ button{
     flex-wrap: wrap;
     text-align: center;
 }
-label{
-    display: inline-block;
-}
+
 .left-side-tools{
     display: flex;
     flex-direction: column;
@@ -150,3 +148,15 @@ label{
     flex-grow: 0;
 }
 
+.highlight-button {
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .highlight-button:hover ,#clear:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border: solid 2px black;
+}
