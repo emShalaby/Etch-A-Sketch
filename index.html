@@ -7,6 +7,7 @@
     <title>Document</title>
     <script src="./javascript.js" defer></script>
     <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> 
 </head>
 <body>
         <h1>Etch-A-Sketch</h1>
@@ -22,19 +23,9 @@
             <div class="color-modes">
                 <label><h2>Coloring modes:</h2></label>
                 
-                <div id="color-container">
-                    <button id="color-mode" class="ON">Normal</button>
-                    <div>
-                        <label>r: 255</label>
-                        <input id="red" type="range" min="0" max="255" step="1" value="255">
-                        <label>g: 255</label>
-                        <input id="green" type="range" min="0" max="255" step="1" value="255">
-                        <label>b: 255</label>
-                        <input id="blue" type="range" min="0" max="255" step="1" value="255">
 
-                    </div>
-                    <canvas id="color-wheel" height="100" width="100"></canvas>
-                </div>
+                <button id="color-mode" class="ON">Normal</button>
+
                 <button id="rainbow">Rainbow</button>
                 </div>
             <div class="optional">
@@ -49,6 +40,7 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 
 </body>
 </html>
