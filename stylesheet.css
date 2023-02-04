@@ -139,4 +139,13 @@ label{
 .left-side-tools{
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    flex-shrink: 1;
+}
+.left-side-tools>div{
+    height: 44px;
+    border: solid 2px silver;
+}
+.left-side-tools button{
+    flex-grow: 0;
 }

@@ -10,6 +10,7 @@ const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
+const saveBtn=document.querySelector('#save')
 let canvasColor='white';
 let brushColor='black';
 
