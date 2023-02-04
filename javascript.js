@@ -10,9 +10,91 @@ const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
+let canvasColor='white';
 let brushColor='black';
 
+const pickr = Pickr.create({
+    el: '.color-picker',
+    theme: 'nano', // or 'monolith', or 'nano'
 
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 0.95)',
+        'rgba(156, 39, 176, 0.9)',
+        'rgba(103, 58, 183, 0.85)',
+        'rgba(63, 81, 181, 0.8)',
+        'rgba(33, 150, 243, 0.75)',
+        'rgba(3, 169, 244, 0.7)',
+        'rgba(0, 188, 212, 0.7)',
+        'rgba(0, 150, 136, 0.75)',
+        'rgba(76, 175, 80, 0.8)',
+        'rgba(139, 195, 74, 0.85)',
+        'rgba(205, 220, 57, 0.9)',
+        'rgba(255, 235, 59, 0.95)',
+        'rgba(255, 193, 7, 1)'
+    ],
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: false,
+            hsva: false,
+            cmyk: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+const pickr2 = Pickr.create({
+    el: '.color-picker',
+    theme: 'nano', // or 'monolith', or 'nano'
+
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 0.95)',
+        'rgba(156, 39, 176, 0.9)',
+        'rgba(103, 58, 183, 0.85)',
+        'rgba(63, 81, 181, 0.8)',
+        'rgba(33, 150, 243, 0.75)',
+        'rgba(3, 169, 244, 0.7)',
+        'rgba(0, 188, 212, 0.7)',
+        'rgba(0, 150, 136, 0.75)',
+        'rgba(76, 175, 80, 0.8)',
+        'rgba(139, 195, 74, 0.85)',
+        'rgba(205, 220, 57, 0.9)',
+        'rgba(255, 235, 59, 0.95)',
+        'rgba(255, 193, 7, 1)'
+    ],
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: false,
+            hsva: false,
+            cmyk: false,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
@@ -20,22 +102,25 @@ makeGrid(size.value,size.value);
 
 //--------functions-------
 //generates the grid
-function makeGrid(rows,columns){
+function makeGrid(rows,columns,canvasCol=canvasColor){
+    container.innerHTML=''
     for(let i=0; i<rows;i++){
         let row=document.createElement('div');
         row.classList.add('row');
+        row.style.backgroundColor=canvasCol;
         container.appendChild(row);
         
         for(let j=0; j<columns; j++){
             let column=document.createElement('div');
             column.classList.add('column');
+            column.style.background=canvasCol;
             row.appendChild(column);
         }
     }
     if (eraser.classList.contains('ON')) {
-        colorable(color='white');
+        colorable(color=canvasColor);
         return;}
-    else if(colorBtn.classList.contains('ON')) colorable();
+    else if(colorBtn.classList.contains('ON')) colorable(brushColor);
     else if(rainbowBtn.classList.contains('ON')) rainbow();
     
 }
@@ -135,7 +220,7 @@ function coloring(elem,color='black'){
 
 function clearContainer(){
     var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.style.backgroundColor='white');
+    columnClass.forEach(element=>element.style.backgroundColor=canvasColor);
 }
 
 
@@ -150,7 +235,7 @@ function erasing(){
     if (eraser.classList.contains('ON')){
     var columnClass=document.querySelectorAll('.column');
     columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
-    colorable('white');
+    colorable(canvasColor);
     }
     
 }
@@ -190,4 +275,15 @@ clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
 colorBtn.addEventListener('click',()=>colorable(brushColor));
+pickr2.on('save',(...args)=> {
+    brushColor=args[0].toRGBA();
+    colorable(brushColor);    
+})
+pickr.on('save',(...args)=> {
+    canvasColor=args[0].toRGBA();
+    makeGrid(size.value,size.value);
+    
+})
+
+
 

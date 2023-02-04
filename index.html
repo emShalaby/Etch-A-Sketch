@@ -10,27 +10,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> 
 </head>
 <body>
+    <div class="header">
+        <div></div>
         <h1>Etch-A-Sketch</h1>
+        <div></div>
+    </div>
     <div class="content">
+        <div class="color-picker-container">
+            <div class="color-picker"></div>
+        </div>
         <div class ='container'>
  
         </div>
 
         <div class="menu">
 
-           
+            <h2>Grid size:</h2>
             <input type="range" min="1" max="64" value="16" id="size">
             <div id="range-text"></div>
 
             <div class="color-modes">
 
                 <div class="color-container"> 
-                    <div class="color-picker"></div>
+                    <div class="color-picker-container">
+                        <div class="color-picker"></div>
+                    </div>
 
                     <button id="brush" class="ON">Brush </button>
                     
                 </div>
-
+                <div class="color-container"> 
+                    
+                    
+                    
+                   
+                    
+                </div>
 
                 <button id="rainbow">Rainbow</button>
                 </div>
@@ -48,48 +63,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     
-    <script>
-        const pickr = Pickr.create({
-    el: '.color-picker',
-    theme: 'nano', // or 'monolith', or 'nano'
 
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
-
-    components: {
-
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
-
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            hsla: true,
-            hsva: true,
-            cmyk: true,
-            input: true,
-            clear: true,
-            save: true
-        }
-    }
-});
-    </script>
 </body>
 </html>
