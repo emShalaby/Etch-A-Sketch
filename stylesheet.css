@@ -29,22 +29,22 @@ h1{
 .container{
     display: flex;
   
-    min-height: 480px;
-    min-width: 480px;
-    height: 620px;
-    width: 620px;
+    min-height: 240px;
+    min-width: 240px;
+    height: 40vw;
+    width: 40vw;
     background-color: whitesmoke;
     flex-direction: column;
-    flex: 1 1 1;
+    
 }
 .row{
     display: flex;
-    flex: 1 1 0;
+    flex-grow:1;
 }
 
 .column{
     display: flex;
-    flex: 1 1 0;
+    flex-grow: 1;
 }
 .menu{
     display: flex;
@@ -132,8 +132,11 @@ button{
 
 .color-picker-container{
     border: solid 2px silver;
-    height: 44px;
 }
 label{
     display: inline-block;
+}
+.left-side-tools{
+    display: flex;
+    flex-direction: column;
 }
