@@ -10,6 +10,27 @@ const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
+const canvas = document.getElementById("color-wheel");
+const ctx = canvas.getContext("2d");
+const image=ctx.createImageData(100,100);//creates an array that will have 4000 indices the first four will be the rgba values for the first pixel ie the mostupperleft pixel and so on..
+const data=image.data;
+const r=document.querySelector('#red');
+const g=document.querySelector('#green');
+const b=document.querySelector('#blue');
+canvasColor()
+function canvasColor(r=255,g=0,b=0,a=255){
+    for(let i=0; i<(100*100*4); i+=4){
+    data[i]=r;
+    data[i+1]=g;
+    data[i+2]=b;
+    data[i+3]=a;
+    }
+    ctx.putImageData(image,0,0);
+}
+//the 0,0 are dx and dy value
+
+
+
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
@@ -38,6 +59,7 @@ function makeGrid(rows,columns){
 }
 
 //to make the grid boxes colorable used the help of chatGPT
+
 function colorable(color='black'){
     const columns = document.querySelectorAll('.column');
     
@@ -62,54 +84,7 @@ function colorable(color='black'){
       });
     });
     }
-function colorable(color='black'){
-    const columns = document.querySelectorAll('.column');
-    
-    let mouseDown = false;
-    
-    columns.forEach(column => {
-      
-      column.addEventListener('click',()=>{
-        column.style.backgroundColor=color;
-      })
-      
-      column.addEventListener('mousedown', () => {
-        mouseDown = true;
-      });
-      column.addEventListener('mouseup', () => {
-        mouseDown = false;
-      });
-      column.addEventListener('mouseenter', () =>{
-        if (mouseDown) {
-            column.style.backgroundColor=color;
-        }
-      });
-    });
-    }
-function colorable(color='black'){
-    const columns = document.querySelectorAll('.column');
-    
-    let mouseDown = false;
-    
-    columns.forEach(column => {
-      
-      column.addEventListener('click',()=>{
-        column.style.backgroundColor=color;
-      })
-      
-      column.addEventListener('mousedown', () => {
-        mouseDown = true;
-      });
-      column.addEventListener('mouseup', () => {
-        mouseDown = false;
-      });
-      column.addEventListener('mouseenter', () =>{
-        if (mouseDown) {
-            column.style.backgroundColor=color;
-        }
-      });
-    });
-    }
+
 //for the rainbow effect
 function rainbow(){
         const columns = document.querySelectorAll('.column');

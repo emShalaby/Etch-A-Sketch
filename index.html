@@ -10,20 +10,33 @@
 </head>
 <body>
         <h1>Etch-A-Sketch</h1>
-
     <div class="content">
         <div class ='container'>
  
         </div>
         <div class="menu">
+
             <h2>Grid size:</h2>
             <input type="range" min="1" max="64" value="16" id="size">
             <div id="range-text"></div>
             <div class="color-modes">
                 <label><h2>Coloring modes:</h2></label>
-                <button id="color-mode" class="ON">Color mode</button>
+                
+                <div id="color-container">
+                    <button id="color-mode" class="ON">Normal</button>
+                    <div>
+                        <label>r: 255</label>
+                        <input id="red" type="range" min="0" max="255" step="1" value="255">
+                        <label>g: 255</label>
+                        <input id="green" type="range" min="0" max="255" step="1" value="255">
+                        <label>b: 255</label>
+                        <input id="blue" type="range" min="0" max="255" step="1" value="255">
+
+                    </div>
+                    <canvas id="color-wheel" height="100" width="100"></canvas>
+                </div>
                 <button id="rainbow">Rainbow</button>
-            </div>
+                </div>
             <div class="optional">
                 <h2>Optional:</h2>
                 
