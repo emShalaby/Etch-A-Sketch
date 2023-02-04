@@ -50,7 +50,7 @@ const pickr = Pickr.create({
             cmyk: false,
             input: true,
             clear: true,
-            save: true
+            save: false
         }
     }
 });
@@ -91,7 +91,7 @@ const pickr2 = Pickr.create({
             cmyk: false,
             input: true,
             clear: true,
-            save: true
+            save: false
         }
     }
 });
@@ -275,11 +275,13 @@ clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
 colorBtn.addEventListener('click',()=>colorable(brushColor));
-pickr2.on('save',(...args)=> {
+pickr2.on('change',(...args)=> {
+    pickr2.applyColor(silent=true);
     brushColor=args[0].toRGBA();
     colorable(brushColor);    
 })
-pickr.on('save',(...args)=> {
+pickr.on('change',(...args)=> {
+    pickr.applyColor(silent=true);
     canvasColor=args[0].toRGBA();
     makeGrid(size.value,size.value);
     
