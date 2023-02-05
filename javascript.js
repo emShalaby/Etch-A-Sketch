@@ -222,8 +222,9 @@ function clearContainer(){
 
 //for one time click buttons
 function buttonFlash(elem){
-    elem.style.backgroundColor='rgb(77, 3, 3)'
-    setTimeout(()=>elem.style.backgroundColor=bodyBackgroundColor,100);
+    elem.style.backgroundColor=bodyBackgroundColor
+    setTimeout(()=>elem.style.backgroundColor='lightgray',200)
+    ;
 }
 
 function erasing(){
