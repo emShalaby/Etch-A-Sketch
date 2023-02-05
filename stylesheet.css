@@ -28,13 +28,12 @@ body,html{
     }
   }
 h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    color: white;
-    font-family: "MD Primer Bold", Rubik, Lato, "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
-    padding-left: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #333;
+    color: blanchedalmond;
 }
 
 .content{
@@ -89,7 +88,9 @@ h1{
     background-color: rgb(77, 3, 3);
 }
 
-
+#eraser,#clear{
+    margin-top: 30px;
+}
 
 
 
