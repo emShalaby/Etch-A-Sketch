@@ -242,10 +242,9 @@ function toggleButtonAll(btn){
     btnArray.forEach(elem=>elem.classList.remove('ON'));
     btn.classList.toggle('ON');
 }
-//for other cases
 
 
-//for buttons that can be turned off / on without affecting others
+
 
 
 function randomRgb(){
@@ -277,7 +276,7 @@ pickr.on('change',(...args)=> {
     canvasColor=args[0].toRGBA();
     makeGrid(size.value,size.value);
     
-})
+});
 saveBtn.addEventListener('click',()=>buttonFlash(saveBtn));
 
 saveBtn.addEventListener("click", function() {
