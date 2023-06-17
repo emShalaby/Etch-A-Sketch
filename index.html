@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-A-Sketch</title>
     <script src="./javascript.js" defer></script>
     <link rel="stylesheet" href="./stylesheet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> 
@@ -17,15 +17,7 @@
     </div>
     <div class="content">
         
-        <div class="left-side-tools">
-            <div class="color-picker-container">
-                <div class="color-picker"></div>
-            </div>
-             <button id="save">
-                <img src="./save-icon.png" alt="save-icon" height="30" width="30">
-            </button>
-        
-        </div>
+
 
         <div class ='container'>
  
@@ -40,7 +32,7 @@
                 <div class="color-picker"></div>
             </div>
 
-            <button id="brush" class="ON highlight-button"><img width="40" height="40" src="./brush-icon.png" alt="brush icon"> </button>        
+            <input id="brush" class="ON highlight-button" type="color"></button>        
             
             <button id="rainbow" class="highlight-button"><img src="./rainbow-icon.png" alt="rainbow-icon" height="30" width="30"></img></button>
                     
@@ -48,14 +40,13 @@
             
             <button id="eraser" class="highlight-button"><img src="./eraser-icon.png" alt="eraser icon" height="30" width="30"></button>
             
-            <button id="clear" class="highlight-button"><img src="./clear-icon.png" alt="clear" height="30" width="30"></img></button>
+            <button id="clear" class="highlight-button"><h3>clear</h3></button>
    
 
         </div>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script><!-- color picker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script><!--save button-->
+    
 
 </body>
 </html>
