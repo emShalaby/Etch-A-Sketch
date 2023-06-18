@@ -11,8 +11,7 @@ const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
 const brush=document.querySelector(".brush");
 const canvasColor=document.querySelector("#canvas");
-const darkenBtn=document.querySelector('#darken')
-const btnArray=[eraser,brush,rainbowBtn,darkenBtn];
+const btnArray=[eraser,brush,rainbowBtn];
 
 
 
@@ -56,7 +55,8 @@ function colorable(color=colorBtn.value){
     columns.forEach(column => {
       
       column.addEventListener('click',()=>{
-        column.style.backgroundColor=color;
+     column.style.backgroundColor=color;
+        
         if (eraser.classList.contains('ON')){
             column.classList.remove('brushed');
 
@@ -73,6 +73,7 @@ function colorable(color=colorBtn.value){
       column.addEventListener('mouseenter', () =>{
         if (mouseDown) {
             column.style.backgroundColor=color;
+
             if (eraser.classList.contains('ON')){
                 column.classList.remove('brushed');
     
@@ -212,7 +213,7 @@ borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 brush.addEventListener('click',()=>toggleButtonAll(brush));
 rainbowBtn.addEventListener('click',()=>toggleButtonAll(rainbowBtn));
 rainbowBtn.addEventListener('click',rainbow);
-darkenBtn.addEventListener('click',()=>toggleButtonAll(darkenBtn))
+
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
