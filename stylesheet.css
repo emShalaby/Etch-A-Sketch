@@ -27,7 +27,7 @@ h1{
 .content{
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 1em;
     margin-top: 20px;
     flex-shrink: 1;
     flex-basis: 0;
@@ -65,10 +65,7 @@ h1{
 }
 
 
-.menu h2{
-    color: white;
-    font-size: 2.5vw;
-}
+
 .menu button.ON{
     background-color: rgb(77, 3, 3);
 }
@@ -87,16 +84,14 @@ button{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 
+
 }
 
 #range-text{
     color: white;
-    font-size: 2vw;
+    font-size: 2em;
+    align-self: center;
 }
-
-
-
-
 
 .header{
     display: flex;
@@ -119,8 +114,7 @@ button{
 
 button:hover,
 input:hover,
-.brush:hover,
-.canvas:hover{
+{
     cursor: pointer;
 }
 

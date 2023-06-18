@@ -7,11 +7,11 @@ const body=document.querySelector('body');
 const eraser=document.querySelector('#eraser');
 const colorBtn=document.querySelector('#brush');
 const rainbowBtn=document.querySelector('#rainbow');
-const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
 let canvasColor='white';
 const brush=document.querySelector(".brush");
+const btnArray=[eraser,brush,rainbowBtn];
 const canvas=document.querySelector(".canvas");
 
 //initial range text
@@ -39,7 +39,7 @@ function makeGrid(rows,columns,canvasCol=canvasColor){
     if (eraser.classList.contains('ON')) {
         colorable(color=canvasColor);
         return;}
-    else if(colorBtn.classList.contains('ON')) colorable(colorBtn.value);
+    else if(brush.classList.contains('ON')) colorable(colorBtn.value);
     else if(rainbowBtn.classList.contains('ON')) rainbow();
     
 }
@@ -176,13 +176,13 @@ function randomRgb(){
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
 borderChange.addEventListener('click',()=>toggleBorder(borderChange));
-colorBtn.addEventListener('click',()=>toggleButtonAll(colorBtn));
+brush.addEventListener('click',()=>toggleButtonAll(brush));
 rainbowBtn.addEventListener('click',()=>toggleButtonAll(rainbowBtn));
 rainbowBtn.addEventListener('click',rainbow);
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
-colorBtn.addEventListener('click',()=>colorable(colorBtn.value));
+brush.addEventListener('click',()=>colorable(colorBtn.value));
 
 colorBtn.addEventListener('input',()=>colorable(colorBtn.value));
