@@ -28,19 +28,28 @@
 
             <input type="range" min="1" max="64" value="16" id="size">
             
-            <div class="color-picker-container">
-                <div class="color-picker"></div>
-            </div>
 
-            <input id="brush" class="ON highlight-button" type="color"></button>        
-            
-            <button id="rainbow" class="highlight-button"><img src="./rainbow-icon.png" alt="rainbow-icon" height="30" width="30"></img></button>
+            <div class="brush">
+                <label for="brush"><h3>Brush:</h2></label>
+                <input id="brush" class="ON highlight-button" type="color"></button>
+            </div> 
+            <div class="canvas">
+                <label for="canvas">
+                    <h3>Canvas:</h3>
+                </label>
+                <input type="color" id="canvas">
+
+            </div>       
+
+                
+            <button id="rainbow" class="highlight-button"><h3>Rainbow</h3></button>
+
                     
-            <button id="border-change" class="highlight-button" ><img src="./grid-lines.png" height="30" width="30"></button>
+            <button id="border-change" class="highlight-button" ><h3>Borders</h3></button>
             
-            <button id="eraser" class="highlight-button"><img src="./eraser-icon.png" alt="eraser icon" height="30" width="30"></button>
+            <button id="eraser" class="highlight-button"><h3>Eraser</h3></button>
             
-            <button id="clear" class="highlight-button"><h3>clear</h3></button>
+            <button id="clear" class="highlight-button"><h3>Clear</h3></button>
    
 
         </div>
