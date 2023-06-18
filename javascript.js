@@ -10,12 +10,9 @@ const rainbowBtn=document.querySelector('#rainbow');
 const btnArray=[eraser,colorBtn,rainbowBtn];
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
-const saveBtn=document.querySelector('#save');
 let canvasColor='white';
-let brushColor='black';
 const brush=document.querySelector(".brush");
 const canvas=document.querySelector(".canvas");
-
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -42,14 +39,14 @@ function makeGrid(rows,columns,canvasCol=canvasColor){
     if (eraser.classList.contains('ON')) {
         colorable(color=canvasColor);
         return;}
-    else if(colorBtn.classList.contains('ON')) colorable(brushColor);
+    else if(colorBtn.classList.contains('ON')) colorable(colorBtn.value);
     else if(rainbowBtn.classList.contains('ON')) rainbow();
     
 }
 
 //to make the grid boxes colorable used the help of chatGPT
 
-function colorable(color=brushColor){
+function colorable(color=colorBtn.value){
     const columns = document.querySelectorAll('.column');
     
     let mouseDown = false;
@@ -144,7 +141,7 @@ function clearContainer(){
 //for one time click buttons
 function buttonFlash(elem){
     elem.style.backgroundColor=bodyBackgroundColor
-    setTimeout(()=>elem.style.backgroundColor='lightgray',200)
+    setTimeout(()=>elem.style.backgroundColor='gray',200)
     ;
 }
 
@@ -186,25 +183,6 @@ size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
 eraser.addEventListener('click',erasing);
-colorBtn.addEventListener('click',()=>colorable(brushColor));
-pickr2.on('change',(...args)=> {
-    pickr2.applyColor(silent=true);
-    brushColor=args[0].toRGBA();
-    colorable(brushColor);    
-})
-pickr.on('change',(...args)=> {
-    pickr.applyColor(silent=true);
-    canvasColor=args[0].toRGBA();
-    makeGrid(size.value,size.value);
-    
-});
-saveBtn.addEventListener('click',()=>buttonFlash(saveBtn));
+colorBtn.addEventListener('click',()=>colorable(colorBtn.value));
 
-saveBtn.addEventListener("click", function() {
-    html2canvas(document.querySelector(".container")).then(canvas => {
-      var link = document.createElement("a");
-      link.download = "screenshot.png";
-      link.href = canvas.toDataURL();
-      link.click();
-    });
-  });
+colorBtn.addEventListener('input',()=>colorable(colorBtn.value));
