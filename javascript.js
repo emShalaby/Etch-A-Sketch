@@ -10,8 +10,9 @@ const rainbowBtn=document.querySelector('#rainbow');
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
 const brush=document.querySelector(".brush");
-const btnArray=[eraser,brush,rainbowBtn];
 const canvasColor=document.querySelector("#canvas");
+const darkenBtn=document.querySelector('#darken')
+const btnArray=[eraser,brush,rainbowBtn,darkenBtn];
 
 
 
@@ -211,6 +212,7 @@ borderChange.addEventListener('click',()=>toggleBorder(borderChange));
 brush.addEventListener('click',()=>toggleButtonAll(brush));
 rainbowBtn.addEventListener('click',()=>toggleButtonAll(rainbowBtn));
 rainbowBtn.addEventListener('click',rainbow);
+darkenBtn.addEventListener('click',()=>toggleButtonAll(darkenBtn))
 size.oninput=sizeChange;
 clear.addEventListener('click',clearContainer);
 clear.addEventListener('click',()=>buttonFlash(clear));
