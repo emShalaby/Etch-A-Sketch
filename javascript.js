@@ -9,10 +9,10 @@ const colorBtn=document.querySelector('#brush');
 const rainbowBtn=document.querySelector('#rainbow');
 const bodyStyles = window.getComputedStyle(body);
 const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
-let canvasColor='white';
 const brush=document.querySelector(".brush");
 const btnArray=[eraser,brush,rainbowBtn];
-const canvas=document.querySelector(".canvas");
+const canvasColor=document.querySelector("#canvas");
+let prevCanvasColor=canvasColor.value;
 
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
@@ -21,7 +21,7 @@ makeGrid(size.value,size.value);
 
 //--------functions-------
 //generates the grid
-function makeGrid(rows,columns,canvasCol=canvasColor){
+function makeGrid(rows,columns,canvasCol=canvasColor.value){
     container.innerHTML=''
     for(let i=0; i<rows;i++){
         let row=document.createElement('div');
@@ -37,7 +37,7 @@ function makeGrid(rows,columns,canvasCol=canvasColor){
         }
     }
     if (eraser.classList.contains('ON')) {
-        colorable(color=canvasColor);
+        colorable(color=canvasColor.value);
         return;}
     else if(brush.classList.contains('ON')) colorable(colorBtn.value);
     else if(rainbowBtn.classList.contains('ON')) rainbow();
@@ -133,7 +133,7 @@ function coloring(elem,color='black'){
 
 function clearContainer(){
     var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.style.backgroundColor=canvasColor);
+    columnClass.forEach(element=>element.style.backgroundColor=canvasColor.value);
 }
 
 
@@ -149,7 +149,7 @@ function erasing(){
     if (eraser.classList.contains('ON')){
     var columnClass=document.querySelectorAll('.column');
     columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
-    colorable(canvasColor);
+    colorable(canvasColor.value);
     }
     
 }
@@ -172,6 +172,22 @@ function randomRgb(){
     return `rgb(${r},${g},${b})`;
 }
 
+function canvasChange(){
+
+    const columns = document.querySelectorAll('.column');
+    const canvasColor=document.querySelector('#canvas').value;
+    console.log(canvasColor)
+    console.log(prevCanvasColor)
+    columns.forEach(column=>{
+        if(column.style.backgroundColor==prevCanvasColor){
+        column.style.backgroundColor=canvasColor;
+        }
+
+    })
+}
+
+
+
 //------EVENTS-----
 
 eraser.addEventListener('click',()=>toggleButtonAll(eraser));
@@ -186,3 +202,4 @@ eraser.addEventListener('click',erasing);
 brush.addEventListener('click',()=>colorable(colorBtn.value));
 
 colorBtn.addEventListener('input',()=>colorable(colorBtn.value));
+canvasColor.addEventListener('input',canvasChange);

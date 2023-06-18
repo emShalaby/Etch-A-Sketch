@@ -114,6 +114,7 @@ button{
 
 button:hover,
 input:hover,
+button>*:hover
 {
     cursor: pointer;
 }
