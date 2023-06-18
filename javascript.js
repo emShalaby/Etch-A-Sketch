@@ -12,7 +12,6 @@ const bodyBackgroundColor = bodyStyles.getPropertyValue("background-color");
 const brush=document.querySelector(".brush");
 const btnArray=[eraser,brush,rainbowBtn];
 const canvasColor=document.querySelector("#canvas");
-let prevCanvasColor=canvasColor.value;
 
 
 
@@ -57,7 +56,11 @@ function colorable(color=colorBtn.value){
       
       column.addEventListener('click',()=>{
         column.style.backgroundColor=color;
-        columne.classList.add('brushed');
+        if (eraser.classList.contains('ON')){
+            column.classList.remove('brushed');
+
+        }
+        else column.classList.add('brushed');
       })
       
       column.addEventListener('mousedown', () => {
@@ -69,7 +72,11 @@ function colorable(color=colorBtn.value){
       column.addEventListener('mouseenter', () =>{
         if (mouseDown) {
             column.style.backgroundColor=color;
-            column.classList.add('brushed');
+            if (eraser.classList.contains('ON')){
+                column.classList.remove('brushed');
+    
+            }
+            else column.classList.add('brushed');
         }
       });
     });
