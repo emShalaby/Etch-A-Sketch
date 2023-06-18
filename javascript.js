@@ -14,6 +14,8 @@ const btnArray=[eraser,brush,rainbowBtn];
 const canvasColor=document.querySelector("#canvas");
 let prevCanvasColor=canvasColor.value;
 
+
+
 //initial range text
 rangeText.innerHTML=size.value+' x '+size.value
 //initial grid
@@ -55,6 +57,7 @@ function colorable(color=colorBtn.value){
       
       column.addEventListener('click',()=>{
         column.style.backgroundColor=color;
+        columne.classList.add('brushed');
       })
       
       column.addEventListener('mousedown', () => {
@@ -66,6 +69,7 @@ function colorable(color=colorBtn.value){
       column.addEventListener('mouseenter', () =>{
         if (mouseDown) {
             column.style.backgroundColor=color;
+            column.classList.add('brushed');
         }
       });
     });
@@ -133,7 +137,11 @@ function coloring(elem,color='black'){
 
 function clearContainer(){
     var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.style.backgroundColor=canvasColor.value);
+    columnClass.forEach(element=>{
+        element.style.backgroundColor=canvasColor.value;
+        element.classList.remove('brushed');
+    }
+        );
 }
 
 
@@ -148,7 +156,11 @@ function buttonFlash(elem){
 function erasing(){
     if (eraser.classList.contains('ON')){
     var columnClass=document.querySelectorAll('.column');
-    columnClass.forEach(element=>element.replaceWith(element.cloneNode(true)));
+    columnClass.forEach(element=>{
+        element.replaceWith(element.cloneNode(true))
+        element.classList.remove('brushed');
+    }
+        );
     colorable(canvasColor.value);
     }
     
@@ -176,16 +188,13 @@ function canvasChange(){
 
     const columns = document.querySelectorAll('.column');
     const canvasColor=document.querySelector('#canvas').value;
-    console.log(canvasColor)
-    console.log(prevCanvasColor)
+
     columns.forEach(column=>{
-        if(column.style.backgroundColor==prevCanvasColor){
-        column.style.backgroundColor=canvasColor;
+        if(column.classList.contains('brushed')!=true){
+            column.style.backgroundColor=canvasColor;
         }
 
-    })
-}
-
+    })}
 
 
 //------EVENTS-----
